@@ -3,17 +3,19 @@ pipeline {
   stages {
     stage('compile') {
       steps {
-        sh 'mvn clean compile'
+        echo 'Step 1. Hello World'
       }
     }
     stage('package') {
       steps {
-        sh 'mvn package -DskipTests'
+        echo 'Step 2. Second time Hello'
+	echo 'Step 3. Third time Hello'  
+
       }
     }
     stage('deploy') {
       steps {
-        sh 'nohup java -jar target/my-first-app-1.0-SNAPSHOT-fat.jar &'
+       echo 'Step 4. last time Hello' 
       }
     }
   }
