@@ -6,11 +6,13 @@ pipeline {
         echo 'Step 1. Hello World'
       }
     }
-    stage('package') {
+    stage('Building_Image') {
       steps {
-        echo 'Step 2. Second time Hello'
-	echo 'Step 3. Third time Hello'  
-
+	sh '''
+	  cd ${WORKSPACE}
+	  REPO="ecr-k8s-app"
+	  docker build --no-cache -t ${REPO}:${BUILD_NUMBER} .
+	  '''
       }
     }
     stage('deploy') {
