@@ -15,9 +15,14 @@ pipeline {
 	  '''
       }
     }
-    stage('deploy') {
+    stage('Pushing_Image_To_ECR') {
       steps {
-       echo 'Step 4. last time Hello' 
+       sh '''
+	REG_ADDRESS="436112110102.dkr.ecr.us-east-2.amazonaws.com/ecr-k8s-app"
+	REPO="ecr-k8s-app"
+	docker tag ${REPO}:${BUILD_NUMBER} ${REG_ADDRESS}/${REPO}:${BUILD_NUMBER}
+	docker push ${REG_ADDRESS}/${REPO}:${BUILD_NUMBER}
+    '''
       }
     }
   }
