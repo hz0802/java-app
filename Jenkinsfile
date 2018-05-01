@@ -10,8 +10,7 @@ pipeline {
       steps {
 	sh '''
 	  cd ${WORKSPACE}
-	  REPO="ecr-k8s-app"
-	  docker build --no-cache -t ${REPO}:${BUILD_NUMBER} .
+          docker build -t $Docker_Reg/$Img_Space/$App_Name:latest
 	  '''
       }
     }
