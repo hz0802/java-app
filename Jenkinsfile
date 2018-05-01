@@ -10,7 +10,7 @@ pipeline {
       steps {
 	sh '''
 	  cd ${WORKSPACE}
-          docker build -t $Docker_Reg/$Img_Space/$App_Name:latest
+          docker build -t $Docker_Reg/$Img_Space/$App_Name:latest .
 	  '''
       }
     }
