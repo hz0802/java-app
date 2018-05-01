@@ -37,7 +37,7 @@ pipeline {
     icp_pass = 'MySecretP4ssw0RD'
     icp_acctid = 'id-mycluster-account'
     icp_clustername = 'mycluster'
-    Docker_Reg = 'mycluster.icp:8500'
+    Docker_Reg = 'icp-console-d6eec5d435c34072.elb.us-west-2.amazonaws.com:8500'
     Img_Space = 'default'
     App_Name = 'java-app'
     rel_name = 'mydemo'
