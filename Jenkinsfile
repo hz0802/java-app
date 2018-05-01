@@ -15,6 +15,12 @@ pipeline {
 	  '''
       }
     }
+    stage('Push to Registry') {
+      steps {
+        sh 'docker login $Docker_Reg -u $icp_user -p $icp_pass'
+        sh 'docker push $Docker_Reg/$Img_Space/$App_Name:latest'
+      }
+    }
     stage('Pushing_Image_To_ECR') {
       steps {
        sh '''
@@ -25,5 +31,16 @@ pipeline {
     '''
       }
     }
+  }
+  environment {
+    icp_server = 'https://9.220.79.110:8443'
+    icp_user = 'admin' 
+    icp_pass = 'MySecretP4ssw0RD'
+    icp_acctid = 'id-mycluster-account'
+    icp_clustername = 'mycluster'
+    Docker_Reg = 'https://icp-console-d6eec5d435c34072.elb.us-west-2.amazonaws.com:8500'
+    Img_Space = 'default'
+    App_Name = 'java-app'
+    rel_name = 'mydemo'
   }
 }
