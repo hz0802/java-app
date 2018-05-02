@@ -48,3 +48,4 @@ pipeline {
     App_Name = 'java-app'
     rel_name = 'mydemo'
   }
+}
