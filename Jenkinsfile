@@ -33,11 +33,11 @@ pipeline {
   }
   environment {
     icp_server = 'https://9.220.79.110:8443'
-    icp_user = 'admin' 
-    icp_pass = 'MySecretP4ssw0RD'
+    icp_user = 'hzhang' 
+    icp_pass = '1ibmpass'
     icp_acctid = 'id-mycluster-account'
     icp_clustername = 'mycluster'
-    Docker_Reg = 'icp-console-d6eec5d435c34072.elb.us-west-2.amazonaws.com:8500'
+    Docker_Reg = 'mycluster.icp:8500'
     Img_Space = 'default'
     App_Name = 'java-app'
     rel_name = 'mydemo'
