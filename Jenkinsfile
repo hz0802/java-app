@@ -24,7 +24,7 @@ pipeline {
     stage('ICP_Login-1') {
       steps {
         sh '''
-        export BLUEMIX_HOME=/root/.bluemix
+        export BLUEMIX_HOME=/tmp/.bluemix
         export PATH=$PATH:/usr/local/bin
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
         bx pr cluster-config $icp_clustername
