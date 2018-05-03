@@ -22,6 +22,15 @@ pipeline {
     }
     stage('ICP_Login') {
       steps {
+        sh 'bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation'
+        sh 'bx pr cluster-config $icp_clustername'
+        sh 'kubectl get nodes'
+        sh 'helm init --client-only'
+      }
+    }
+
+    stage('ICP_Login') {
+      steps {
         sh '/usr/local/bin/bx pr login -a $icp_server -u $icp_user -p $icp_pass --skip-ssl-validation'
         sh '/usr/local/bin/bx pr cluster-config $icp_clustername'
         sh 'kubectl get nodes'
