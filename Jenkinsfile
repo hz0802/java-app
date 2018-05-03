@@ -23,11 +23,13 @@ pipeline {
     }
     stage('ICP_Login-1') {
       steps {
-        sh 'export BLUEMIX_HOME=/root/.bluemix'
-        sh 'bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation'
-        sh 'bx pr cluster-config $icp_clustername'
-        sh 'kubectl get nodes'
-        sh 'helm init --client-only'
+        sh '''
+        export BLUEMIX_HOME=/root/.bluemix
+        bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
+        bx pr cluster-config $icp_clustername
+        kubectl get nodes
+        helm init --client-only
+        '''
       }
     }
     stage('ICP_Deploy') {
