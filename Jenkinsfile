@@ -20,7 +20,7 @@ pipeline {
         sh 'docker push $Docker_Reg/$Img_Space/$App_Name:latest'
       }
     }
-    stage('ICP_Login') {
+    stage('ICP_Login-1') {
       steps {
         sh 'bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation'
         sh 'bx pr cluster-config $icp_clustername'
