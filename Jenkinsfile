@@ -4,6 +4,7 @@ pipeline {
     stage('compile') {
       steps {
         echo 'Step 1. Hello World'
+	sh 'whoami'
       }
     }
     stage('Building_Image') {
