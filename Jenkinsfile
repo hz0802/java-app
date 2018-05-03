@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'Step 1. Hello World'
 	sh 'whoami'
+        sh 'bx plugin install /home/ec2-user/icp-linux-amd64'
       }
     }
     stage('Building_Image') {
