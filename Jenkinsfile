@@ -5,7 +5,6 @@ pipeline {
       steps {
         echo 'Step 1. Hello World'
 	sh 'whoami'
-        sh 'bx plugin install /home/ec2-user/icp-linux-amd64'
       }
     }
     stage('Building_Image') {
@@ -24,6 +23,7 @@ pipeline {
     }
     stage('ICP_Login-1') {
       steps {
+        sh 'export BLUEMIX_HOME=/root/.bluemix'
         sh 'bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation'
         sh 'bx pr cluster-config $icp_clustername'
         sh 'kubectl get nodes'
