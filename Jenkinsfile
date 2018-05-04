@@ -21,25 +21,6 @@ pipeline {
         sh 'docker push $Docker_Reg/$Img_Space/$App_Name:latest'
       }
     }
-    stage('ICP_Login-1') {
-      steps {
-        sh '''
-        export BLUEMIX_HOME=/root/.bluemix
-        export PATH=$PATH:/usr/local/bin
-        bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
-        bx pr cluster-config $icp_clustername
-        kubectl get nodes
-        helm init --client-only
-        '''
-      }
-    }
-    stage('ICP_Deploy') {
-      steps {
-        sh 'kubectl run java-app --image=$Docker_Reg/$Img_Space/$App_Name:latest'
-        sh 'kubectl expose deployment/java-app --port=80 --target-port=80'
-
-      }
-    }
   }
   environment {
     icp_server = 'https://ec2-18-219-192-91.us-east-2.compute.amazonaws.com:8443'
