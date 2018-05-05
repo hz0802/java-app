@@ -19,7 +19,7 @@ pipeline {
         }
         stage('approval') {
           steps {
-            input 'approval requried'
+            input 'imabe built success, can puth this image to icp register ?'
           }
         }
       }
