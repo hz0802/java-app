@@ -29,6 +29,11 @@ pipeline {
         sh 'echo \'hello\''
       }
     }
+    stage('sucess !') {
+      steps {
+        echo 'Java app build and deployed in icp successfully !'
+      }
+    }
   }
   environment {
     icp_server = 'https://ec2-18-219-192-91.us-east-2.compute.amazonaws.com:8443'
