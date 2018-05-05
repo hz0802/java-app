@@ -19,7 +19,7 @@ pipeline {
         }
         stage('approval') {
           steps {
-            input 'imabe built success, can puth this image to icp register ?'
+            input 'image built success, can push this image to icp container registry?'
           }
         }
       }
