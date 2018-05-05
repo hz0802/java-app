@@ -31,7 +31,7 @@ pipeline {
     }
     stage('sucess !') {
       steps {
-        echo 'Java app build and deployed in icp successfully !'
+        echo 'Great, Java app build and deployed in icp successfully !'
       }
     }
   }
