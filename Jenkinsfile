@@ -19,7 +19,7 @@ pipeline {
         }
         stage('approval') {
           steps {
-            input(message: 'approval requried', id: 'hzhang', ok: 'ok')
+            input 'approval requried'
           }
         }
       }
