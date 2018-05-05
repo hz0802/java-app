@@ -15,12 +15,6 @@ pipeline {
           '''
       }
     }
-    stage('Push to Registry') {
-      steps {
-        sh 'docker login $Docker_Reg -u $icp_user -p $icp_pass'
-        sh 'docker push $Docker_Reg/$Img_Space/$App_Name:latest'
-      }
-    }
   }
   environment {
     icp_server = 'https://ec2-18-219-192-91.us-east-2.compute.amazonaws.com:8443'
