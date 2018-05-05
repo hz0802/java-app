@@ -4,7 +4,7 @@ pipeline {
     stage('compile') {
       steps {
         echo 'Step 1. Hello World'
-	sh 'whoami'
+        sh 'whoami'
       }
     }
     stage('Building_Image') {
@@ -13,6 +13,11 @@ pipeline {
           cd ${WORKSPACE}
           docker build -t $Docker_Reg/$Img_Space/$App_Name:latest .
           '''
+      }
+    }
+    stage('say_hello') {
+      steps {
+        sh 'echo \'hello\''
       }
     }
   }
