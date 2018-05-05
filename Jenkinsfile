@@ -8,11 +8,20 @@ pipeline {
       }
     }
     stage('Building_Image') {
-      steps {
-        sh '''
+      parallel {
+        stage('Building_Image') {
+          steps {
+            sh '''
           cd ${WORKSPACE}
           docker build -t $Docker_Reg/$Img_Space/$App_Name:latest .
           '''
+          }
+        }
+        stage('approval') {
+          steps {
+            input(message: 'approval requried', id: 'hzhang', ok: 'ok')
+          }
+        }
       }
     }
     stage('say_hello') {
