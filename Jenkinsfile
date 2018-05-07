@@ -31,6 +31,7 @@ pipeline {
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
         kubectl get nodes
         kubectl run java-app-deployment --image=$Docker_Reg/$Img_Space/$App_Name:latest
+        helm init --client-only
         '''
       }
     }
