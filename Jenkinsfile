@@ -24,6 +24,11 @@ pipeline {
         }
       }
     }
+    stage('install pr') {
+          steps {
+          sh 'bx plugin install /home/ec2-user/icp-linux-amd64'
+         }
+    }
     stage('Push to Registry') {
       steps {
         sh '''
