@@ -35,6 +35,7 @@ pipeline {
         bx pr cluster-config $icp_clustername
         kubectl get nodes
         kubectl run java-app --image=$Docker_Reg/$Img_Space/$App_Name:latest
+        kubectl expose deployment/java-app --port=80 --target-port=80
         '''
       }
     }
