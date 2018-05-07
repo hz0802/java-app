@@ -24,17 +24,13 @@ pipeline {
         }
       }
     }
-    stage('install pr') {
-          steps {
-          sh 'bx plugin install /home/ec2-user/icp-linux-amd64'
-         }
-    }
     stage('Push to Registry') {
       steps {
         sh '''
         docker login $Docker_Reg -u $icp_user -p $icp_pass
         docker push $Docker_Reg/$Img_Space/$App_Name:latest
         export PATH=$PATH:/usr/local/bin
+        bx plugin install /home/ec2-user/icp-linux-amd64
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
         bx pr cluster-config $icp_clustername
         kubectl get nodes
