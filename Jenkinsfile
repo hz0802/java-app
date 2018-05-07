@@ -32,7 +32,6 @@ pipeline {
         export PATH=$PATH:/usr/local/bin
         export BLUEMIX_HOME=/var/lib/jenkins/.bluemix
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
-        bx pr cluster-config $icp_clustername
         kubectl get nodes
         kubectl delete deployment java-app
         kubectl run java-app --image=$Docker_Reg/$Img_Space/$App_Name:latest
