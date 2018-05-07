@@ -8,20 +8,11 @@ pipeline {
       }
     }
     stage('Building_Image') {
-      parallel {
-        stage('Building_Image') {
-          steps {
-            sh '''
+      steps {
+        sh '''
           cd ${WORKSPACE}
           docker build -t $Docker_Reg/$Img_Space/$App_Name:latest .
           '''
-          }
-        }
-        stage('approval') {
-          steps {
-            input 'image built success, can push this image to icp container registry?'
-          }
-        }
       }
     }
     stage('Push to Registry') {
