@@ -39,6 +39,13 @@ pipeline {
         '''
       }
     }
+    stage('ICP_Deploy') {
+      steps {
+        sh 'kubectl run java-app --image=$Docker_Reg/$Img_Space/$App_Name:latest'
+        sh 'kubectl expose deployment/java-app --port=80 --target-port=80'
+
+      }
+    }
     stage('say_hello') {
       steps {
         sh 'echo \'hello\''
