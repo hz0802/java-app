@@ -33,9 +33,8 @@ pipeline {
         export BLUEMIX_HOME=/var/lib/jenkins/.bluemix
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
         kubectl get nodes
-        kubectl delete deployment java-app
-        kubectl run java-app --image=$Docker_Reg/$Img_Space/$App_Name:latest
-        kubectl expose deployment/java-app --port=80 --target-port=80
+        kubectl run java-app-deployment --image=$Docker_Reg/$Img_Space/$App_Name:latest
+        kubectl expose deployment/java-app-deployment --port=80 --target-port=80
         '''
       }
     }
