@@ -26,8 +26,10 @@ pipeline {
     }
     stage('Push to Registry') {
       steps {
-        sh 'docker login $Docker_Reg -u $icp_user -p $icp_pass'
-        sh 'docker push $Docker_Reg/$Img_Space/$App_Name:latest'
+        sh '''
+        docker login $Docker_Reg -u $icp_user -p $icp_pass
+        docker push $Docker_Reg/$Img_Space/$App_Name:latest
+        '''
       }
     }
     stage('say_hello') {
