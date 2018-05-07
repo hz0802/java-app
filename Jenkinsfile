@@ -34,6 +34,7 @@ pipeline {
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
         bx pr cluster-config $icp_clustername
         kubectl get nodes
+        kubectl delete deployment java-app
         kubectl run java-app --image=$Docker_Reg/$Img_Space/$App_Name:latest
         kubectl expose deployment/java-app --port=80 --target-port=80
         '''
