@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\io",
+    "\\src\\main\\java\\io\\vertx",
+    "\\src\\main\\java\\io\\vertx\\blog",
+    "\\src\\main\\java\\io\\vertx\\blog\\first"
   ],
   "PreviewInSolutionExplorer": false
 }

@@ -56,6 +56,5 @@ pipeline {
     Docker_Reg = 'mycluster.icp:8500'
     Img_Space = 'default'
     App_Name = 'java-app'
-    rel_name = 'mydemo'
   }
 }
