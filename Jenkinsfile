@@ -32,7 +32,6 @@ pipeline {
 		bx pr cluster-config $icp_clustername
         kubectl get nodes
         kubectl run java-app-deployment --image=$Docker_Reg/$Img_Space/$App_Name:latest
-		kubectl expose deployment/java-app-deployment --port=8080 --target-port=8080
         helm init --client-only
         '''
       }
