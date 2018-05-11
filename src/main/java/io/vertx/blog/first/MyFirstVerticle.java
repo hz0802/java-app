@@ -58,7 +58,7 @@ public class MyFirstVerticle extends AbstractVerticle {
       HttpServerResponse response = routingContext.response();
       response
           .putHeader("content-type", "text/html")
-          .end("<h1 style=\"text-align:center;color:Brown;background-color:powderblue;font-family:Lucida Console;\"> hello OK !</h1>");
+          .end("<h1 style=\"text-align:center;color:Brown;background-color:powderblue;font-family:Lucida Console;\"> hello USA !</h1>");
     });
 
     router.route("/assets/*").handler(StaticHandler.create("assets"));
