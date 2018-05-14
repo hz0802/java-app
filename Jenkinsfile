@@ -40,7 +40,7 @@ pipeline {
       parallel {
         stage('sending email') {
           steps {
-            mail (to: 'zhaimo@yahoo.com',
+            mail (to: 'haimo.zhang@ibm.com',
 				  subject: "Job '${env.JOB_NAME}' is waiting for input",
 				  body: "Please go to ${env.BUILD_URL}.")
           }
