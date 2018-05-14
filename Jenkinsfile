@@ -69,6 +69,6 @@ pipeline {
     Docker_Reg = 'mycluster.icp:8500'
     Img_Space = 'default'
     App_Name = 'java-app'
-	JOB_LINK = "http://52.11.131.45:8083/blue/organizations/jenkins/java-app/detail/master/'${env.JOB_NUMBER}'/pipeline"
+	JOB_LINK = "http://52.11.131.45:8083/blue/organizations/jenkins/java-app/detail/master/${env.JOB_NUMBER}/pipeline"
   }
 }
