@@ -63,17 +63,14 @@ pipeline {
         '''
       }
     }
-    stage('sucess !') {
+    stage('perf testing') {
       steps {
-        echo 'Great, Java app build and deployed in icp successfully !'
-      }
+	  sh '''
+        curl -X POST -H 'Content-Type: application/json' -H 'x-api: 53f5e2cde0eb0c3db47c7537b27d50e3' https://divecloud.nouvola.com/api/v1/plans/6103/run
+      '''
+	  }
     }
-    stage('') {
-      steps {
-        tool(name: 'nouvola', type: 'test')
-      }
-    }
-  }
+   }
   environment {
     icp_server = 'https://ec2-18-219-192-91.us-east-2.compute.amazonaws.com:8443'
     icp_user = 'hzhang'
