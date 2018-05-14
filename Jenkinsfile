@@ -38,16 +38,16 @@ pipeline {
     }
     stage('say_hello') {
       parallel {
-        stage('say_hello') {
+        stage('sending email') {
           steps {
-            sh 'echo \'hello\''
+            mail (to: 'haimo.zhang@ibm.com',
+				  subject: "Job '${env.JOB_NAME}' is waiting for input",
+				  body: "Please go to ${env.BUILD_URL}.")
           }
         }
         stage('approval') {
           steps {
-			mail (to: 'haimo.zhang@ibm.com',
-				  subject: "Job '${env.JOB_NAME}' is waiting for input",
-				  body: "Please go to ${env.BUILD_URL}.")
+
             input 'ok to proceed ?'
           }
         }
