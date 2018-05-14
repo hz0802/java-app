@@ -42,7 +42,8 @@ pipeline {
           steps {
             mail (to: 'haimo.zhang@ibm.com',
 				  subject: "Job '${env.JOB_NAME}' is waiting for input",
-				  body: "Please go to http://52.11.131.45:8083/blue/organizations/jenkins/java-app/detail/master/${JOB_NUMBER}/pipeline")
+				  body: "Please go to 'JOB_LINK'"
+				  )
           }
         }
         stage('approval') {
@@ -68,5 +69,6 @@ pipeline {
     Docker_Reg = 'mycluster.icp:8500'
     Img_Space = 'default'
     App_Name = 'java-app'
+	JOB_LINK = 'http://52.11.131.45:8083/blue/organizations/jenkins/java-app/detail/master/${JOB_NUMBER}/pipeline'
   }
 }
