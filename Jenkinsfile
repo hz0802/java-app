@@ -45,7 +45,7 @@ pipeline {
         }
         stage('approval') {
           steps {
-			mail (to: 'haimo.zhang@ibm.com,
+			mail (to: 'haimo.zhang@ibm.com',
 				  subject: "Job '${env.JOB_NAME}' is waiting for input",
 				  body: "Please go to ${env.BUILD_URL}.")
             input 'ok to proceed ?'
