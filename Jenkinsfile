@@ -36,13 +36,13 @@ pipeline {
         '''
       }
     }
-    stage('say_hello') {
+    stage('sending email') {
       parallel {
         stage('sending email') {
           steps {
             mail (to: 'haimo.zhang@ibm.com',
 				  subject: "Job '${env.JOB_NAME}' is waiting for input",
-				  body: "Please go to ${env.BUILD_URL}.")
+				  body: "Please go to http://52.11.131.45:8083/blue/organizations/jenkins/java-app/detail/master/${JOB_NUMBER}/pipeline")
           }
         }
         stage('approval') {
