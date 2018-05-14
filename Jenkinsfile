@@ -36,13 +36,13 @@ pipeline {
         '''
       }
     }
-    stage('sending email') {
+    stage('Approval to proceed') {
       parallel {
         stage('sending email') {
           steps {
             mail (to: 'haimo.zhang@ibm.com',
 				  subject: "Job '${env.JOB_NAME}' is waiting for input",
-				  body: "Please go to 'JOB_LINK'"
+				  body: "Please go to '${JOB_LINK}'"
 				  )
           }
         }
