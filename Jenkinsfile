@@ -23,7 +23,7 @@ pipeline {
         '''
       }
     }
-    stage('Deploy onto ICP ') {
+    stage('Deploy onto ICP DEV ') {
       steps {
         sh '''
         export PATH=$PATH:/usr/local/bin
@@ -31,7 +31,7 @@ pipeline {
         bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
 		bx pr cluster-config $icp_clustername
         kubectl get nodes
-        kubectl run java-app-deployment --image=$Docker_Reg/$Img_Space/$App_Name:latest
+        kubectl run java-app-deployment1 --image=$Docker_Reg/$Img_Space/$App_Name:latest
         helm init --client-only
         '''
       }
@@ -52,6 +52,19 @@ pipeline {
             input 'ok to proceed ?'
           }
         }
+      }
+    }
+	 stage('Deploy onto ICP UAT ') {
+      steps {
+        sh '''
+        export PATH=$PATH:/usr/local/bin
+        export BLUEMIX_HOME=/var/lib/jenkins/.bluemix
+        bx pr login -a $icp_server -u $icp_user -p $icp_pass -c $icp_acctid --skip-ssl-validation
+		bx pr cluster-config $icp_clustername
+        kubectl get nodes
+        kubectl run java-app-deployment2 --image=$Docker_Reg/$Img_Space/$App_Name:latest
+      
+        '''
       }
     }
     stage('sucess !') {
