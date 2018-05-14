@@ -37,8 +37,17 @@ pipeline {
       }
     }
     stage('say_hello') {
-      steps {
-        sh 'echo \'hello\''
+      parallel {
+        stage('say_hello') {
+          steps {
+            sh 'echo \'hello\''
+          }
+        }
+        stage('approval') {
+          steps {
+            input 'ok to proceed ?'
+          }
+        }
       }
     }
     stage('sucess !') {
