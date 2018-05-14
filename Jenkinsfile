@@ -40,21 +40,17 @@ pipeline {
       parallel {
         stage('sending email') {
           steps {
-            mail (to: 'haimo.zhang@ibm.com',
-				  subject: "Job '${env.JOB_NAME}' is waiting for input",
-				  body: "Please go to '${JOB_LINK}'"
-				  )
+            mail(to: 'haimo.zhang@ibm.com', subject: "Job '${env.JOB_NAME}' is waiting for input", body: "Please go to '${JOB_LINK}'")
           }
         }
         stage('approval') {
           steps {
-
             input 'ok to proceed ?'
           }
         }
       }
     }
-	 stage('Deploy onto ICP UAT ') {
+    stage('Deploy onto ICP UAT ') {
       steps {
         sh '''
         export PATH=$PATH:/usr/local/bin
@@ -72,6 +68,11 @@ pipeline {
         echo 'Great, Java app build and deployed in icp successfully !'
       }
     }
+    stage('') {
+      steps {
+        tool(name: 'nouvola', type: 'test')
+      }
+    }
   }
   environment {
     icp_server = 'https://ec2-18-219-192-91.us-east-2.compute.amazonaws.com:8443'
@@ -82,6 +83,6 @@ pipeline {
     Docker_Reg = 'mycluster.icp:8500'
     Img_Space = 'default'
     App_Name = 'java-app'
-	JOB_LINK = 'http://52.11.131.45:8083/blue/organizations/jenkins/java-app'
+    JOB_LINK = 'http://52.11.131.45:8083/blue/organizations/jenkins/java-app'
   }
 }
