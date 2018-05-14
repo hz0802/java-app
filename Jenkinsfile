@@ -42,7 +42,7 @@ pipeline {
           steps {
             mail (to: 'haimo.zhang@ibm.com',
 				  subject: "Job '${env.JOB_NAME}' is waiting for input",
-				  body: "Please go to '${JOB_LINK}'"
+				  body: "Please go to ${JOB_LINK}"
 				  )
           }
         }
