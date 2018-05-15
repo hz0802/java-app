@@ -67,6 +67,7 @@ pipeline {
       steps {
 	  sh '''
         curl -X POST -H 'Content-Type: application/json' -H 'x-api: 53f5e2cde0eb0c3db47c7537b27d50e3' https://divecloud.nouvola.com/api/v1/plans/6103/run
+		curl -X GET -H 'Content-Type: application/json' -H 'x-api: 53f5e2cde0eb0c3db47c7537b27d50e3' https://divecloud.nouvola.com/api/v1/test_instances/6103
       '''
 	  }
     }
