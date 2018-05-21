@@ -65,7 +65,7 @@ pipeline {
     }
     stage('Perf teste by blazemeter') {
       steps {
-        blazeMeterTest(jobApiKey: '68176df12afe095e0aa2ce1e')
+        blazeMeterTest()
       }
     }
   }
