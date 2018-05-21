@@ -63,15 +63,12 @@ pipeline {
         '''
       }
     }
-    stage('perf testing') {
+    stage('Perf teste by blazemeter') {
       steps {
-	  sh '''
-        curl -X POST -H 'Content-Type: application/json' -H 'x-api: 53f5e2cde0eb0c3db47c7537b27d50e3' https://divecloud.nouvola.com/api/v1/plans/6103/run
-		curl -X GET -H 'Content-Type: application/json' -H 'x-api: 53f5e2cde0eb0c3db47c7537b27d50e3' https://divecloud.nouvola.com/api/v1/test_instances/6103
-      '''
-	  }
+        blazeMeterTest(credentialsId: '226453', workspaceId: ' 220441', testId: '6106183')
+      }
     }
-   }
+  }
   environment {
     icp_server = 'https://ec2-18-219-192-91.us-east-2.compute.amazonaws.com:8443'
     icp_user = 'hzhang'
