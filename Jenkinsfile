@@ -65,7 +65,7 @@ pipeline {
     }
     stage('Perf teste by blazemeter') {
       steps {
-        blazeMeterTest(credentialsId: '226453', workspaceId: ' 220441', testId: '6106183')
+        blazeMeterTest(credentialsId: '226453', workspaceId: ' 220441', testId: '6106183', jobApiKey: '68176df12afe095e0aa2ce1e')
       }
     }
   }
