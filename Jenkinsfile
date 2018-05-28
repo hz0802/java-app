@@ -15,11 +15,20 @@ pipeline {
           '''
       }
     }
-    stage('approval for image build') {
-      steps {
-        input 'ok to proceed ?'
-      }
-    }
+    stage('Approval to proceed') {
+          parallel {
+            stage('sending email') {
+              steps {
+                mail(to: 'haimo.zhang@ibm.com', subject: "Job '${env.JOB_NAME}' is waiting for input", body: "Please go to '${env.RUN_DISPLAY_URL}'")
+              }
+            }
+            stage('approval') {
+              steps {
+                input 'ok to proceed ?'
+              }
+            }
+          }
+        }
     stage('Push to Registry') {
       steps {
         sh '''
