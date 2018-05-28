@@ -4,7 +4,6 @@ pipeline {
     stage('compile') {
       steps {
         echo 'Step 1. Hello World'
-        sh 'whoami'
       }
     }
     stage('Building_Image') {
@@ -59,7 +58,7 @@ pipeline {
 		bx pr cluster-config $icp_clustername
         kubectl get nodes
         kubectl run java-app-deployment2 --image=$Docker_Reg/$Img_Space/$App_Name:latest
-      
+
         '''
       }
     }
