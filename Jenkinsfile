@@ -2,8 +2,23 @@ pipeline {
   agent any
   stages {
     stage('compile') {
+<<<<<<< HEAD
       steps {
         echo 'Step 1. Hello World'
+=======
+      parallel {
+        stage('compile') {
+          steps {
+            echo 'Step 1. Hello World'
+            sh 'whoami'
+          }
+        }
+        stage('perf test') {
+          steps {
+            blazeMeterTest(credentialsId: '4032d033-52d5-4ff5-be2c-cfe2cfbf46e8', workspaceId: '220441', testId: '6106183')
+          }
+        }
+>>>>>>> 6f35f8ffffc0f9a95d92572f55ce20efd66038e7
       }
     }
     stage('Building_Image') {
@@ -64,7 +79,7 @@ pipeline {
     }
     stage('Perf teste by blazemeter') {
       steps {
-        blazeMeterTest(credentialsId: '226453', workspaceId: ' 220441', testId: '6106183', jobApiKey: '68176df12afe095e0aa2ce1e')
+        blazeMeterTest(testId: '6106183', workspaceId: '220441', getJtl: true, serverUrl: 'https://a.blazemeter.com', credentialsId: '4032d033-52d5-4ff5-be2c-cfe2cfbf46e8')
       }
     }
   }
