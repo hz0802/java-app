@@ -29,6 +29,11 @@ pipeline {
           '''
       }
     }
+    stage('approval for image build') {
+      steps {
+        input 'ok to proceed ?'
+      }
+    }
     stage('Push to Registry') {
       steps {
         sh '''
