@@ -1,26 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('compile') {
-<<<<<<< HEAD
-      steps {
-        echo 'Step 1. Hello World'
-=======
-      parallel {
         stage('compile') {
           steps {
             echo 'Step 1. Hello World'
             sh 'whoami'
           }
         }
-        stage('perf test') {
-          steps {
-            blazeMeterTest(credentialsId: '4032d033-52d5-4ff5-be2c-cfe2cfbf46e8', workspaceId: '220441', testId: '6106183')
-          }
-        }
->>>>>>> 6f35f8ffffc0f9a95d92572f55ce20efd66038e7
-      }
-    }
     stage('Building_Image') {
       steps {
         sh '''
